@@ -20,6 +20,10 @@ public class ParkingLot {
     }
     
     public ParkingTicket parkCar(Car car) {
+    	int position = this.getAvailableParkingPosition();
+    	if(position >= 0) {
+    		return null;
+    	}
     	ParkingTicket pTicket =new ParkingTicket();
     	cars.put(pTicket, car);
     	return pTicket;

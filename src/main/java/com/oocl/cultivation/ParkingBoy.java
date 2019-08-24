@@ -17,6 +17,9 @@ public class ParkingBoy {
     	ParkingTicket pTicket = parkingLot.parkCar(car);
     	if(pTicket != null) {
     		this.lastErrorMessage = null;
+    	}else {
+    		this.lastErrorMessage = "The parking lot is full.";
+    		return null;
     	}
        return pTicket;
     }
@@ -26,6 +29,7 @@ public class ParkingBoy {
     		this.lastErrorMessage = "Please provide your parking ticket.";
     		return null;
     	}else if(parkingTicketsList.contains(ticket)) {
+    		this.lastErrorMessage = "Unrecognized parking ticket.";
     		return null;
     	}
     	Car car = parkingLot.pickCar(ticket);
