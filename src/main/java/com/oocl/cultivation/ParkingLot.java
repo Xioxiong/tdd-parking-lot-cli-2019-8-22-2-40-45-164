@@ -25,6 +25,10 @@ public class ParkingLot {
     	return pTicket;
     }
     public Car pickCar(ParkingTicket pTicket) {
-    	return cars.get(pTicket);
+    	Car car = cars.get(pTicket);
+    	if(car == null) {
+    		return null;
+    	}
+    	return car;
     }
 }
