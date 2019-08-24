@@ -1,9 +1,13 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingBoy {
 
     private final ParkingLot parkingLot;
     private String lastErrorMessage;
+    private List parkingTicketsList = new ArrayList<ParkingTicket>();;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
@@ -21,11 +25,15 @@ public class ParkingBoy {
     	if(ticket == null) {
     		this.lastErrorMessage = "Please provide your parking ticket.";
     		return null;
+    	}else if(parkingTicketsList.contains(ticket)) {
+    		return null;
     	}
     	Car car = parkingLot.pickCar(ticket);
     	if(car == null) {
     		this.lastErrorMessage = "Unrecognized parking ticket.";
+    		return null;
     	}
+    	parkingTicketsList.add(ticket);
        return car;
     }
 
