@@ -10,7 +10,11 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-       return parkingLot.parkCar(car);
+    	ParkingTicket pTicket = parkingLot.parkCar(car);
+    	if(pTicket != null) {
+    		this.lastErrorMessage = null;
+    	}
+       return pTicket;
     }
 
     public Car fetch(ParkingTicket ticket) {
